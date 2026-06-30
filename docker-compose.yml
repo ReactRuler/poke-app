@@ -1,0 +1,19 @@
+services:
+  pokeapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:8080"
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - NEXT_PORT=3000
+    volumes:
+      - pokemon-data:/app/public/data
+      - pokemon-images:/app/public/pokemon
+    restart: unless-stopped
+
+volumes:
+  pokemon-data:
+  pokemon-images:
